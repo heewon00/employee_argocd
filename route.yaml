@@ -1,19 +1,20 @@
-apiVersion: route.openshift.io/v1
-kind: Route
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: employee-frontend
   annotations:
-#    cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-staging
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/rewrite-target: /
+    ingressclass.kubernetes.io/is-default-class: "true"
 spec:
-  port:
-    targetPort: http
-  tls:
- - hosts:
-   - edu-domain.duckdns.org
-#    secretName: cert-manager-webhook-duckdns-staging
-    termination: edge
-  to:
-    kind: Service
-    name: employee-frontend
-    weight: 100
-  wildcardPolicy: None
+  rules:
+  - host: edu-domain.duckdns.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: employee-frontend
+            port:
+              number: 80
