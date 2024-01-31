@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: employee-frontend
+  annotations:
+#    cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-staging
+spec:
+  port:
+    targetPort: http
+  tls:
+#  - hosts:
+#    - frontend-react-edu25.apps.okd4.ktdemo.duckdns.org
+#    secretName: cert-manager-webhook-duckdns-staging
+    termination: edge
+  to:
+    kind: Service
+    name: employee-frontend
+    weight: 100
+  wildcardPolicy: None
