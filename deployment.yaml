@@ -1,4 +1,4 @@
-piVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: employee-frontend
@@ -18,8 +18,8 @@ spec:
       - name: employee-frontend
         imagePullPolicy: Always
         image: ghcr.io/heewon00/vue_crud_security:test_v5
-          env:
+        env:
           - name: BACKEND_API_URL
-           value: "http:/employee-backend" 
+            value: "http://employee-backend" 
         ports:
         - containerPort: 80
