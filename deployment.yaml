@@ -20,6 +20,6 @@ spec:
         image: ghcr.io/heewon00/vue_crud_security:test_v5
           env:
           - name: BACKEND_API_URL
-           value: "http://backend-springboot" 
+           value: "http:/employee-backend" 
         ports:
         - containerPort: 80
