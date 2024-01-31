@@ -18,8 +18,8 @@ spec:
       - name: employee-frontend
         imagePullPolicy: Always
         image: ghcr.io/heewon00/vue_crud_security:test_v5
-          env:
-          - name: BACKEND_API_URL
-           value: "http:/employee-backend" 
+          # env:
+          # - name: BACKEND_API_URL
+          #  value: "http:/employee-backend" 
         ports:
         - containerPort: 80
