@@ -9,7 +9,7 @@ spec:
     targetPort: http
   tls:
  - hosts:
-   - https://edu-domain.duckdns.org/
+   - edu-domain.duckdns.org
 #    secretName: cert-manager-webhook-duckdns-staging
     termination: edge
   to:
