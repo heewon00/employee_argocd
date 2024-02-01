@@ -1,5 +1,4 @@
 # ArgoCD Blue/Green 배포 예제
-
 apiVersion: argoproj.io/v1alpha1     # apps/v1 대신 argoproj.io/v1alpha1을 사용한다
 kind: Rollout  # Deployment 대신 Rollout을 사용한다
 metadata:
@@ -18,11 +17,10 @@ spec:
       containers:
       - name: frontend
         image: ghcr.io/shclub/vue3:v2
-        # image: ghcr.io/shclub/vue3:v1
         imagePullPolicy: Always
         env:
-          - name: BACKEND_API_URL
-            value: "backend" 
+        - name: BACKEND_API_URL
+          value: "backend" 
         ports:
         - containerPort: 80
   strategy:
@@ -37,6 +35,7 @@ spec:
       autoPromotionEnabled: false
 
 ---
+apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
@@ -49,6 +48,7 @@ spec:
       targetPort: 80
   type: NodePort   
 ---
+apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service-preview
