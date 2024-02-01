@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/heewon00/vue_crud_security:argocd_v4
+        image: ghcr.io/shclub/vue3:v2
         # image: ghcr.io/shclub/vue3:v1
         imagePullPolicy: Always
         env:
