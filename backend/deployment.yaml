@@ -19,8 +19,12 @@ spec:
         imagePullPolicy: Always
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: "local"
+            value: "dev"
           - name: JAVA_TOOL_OPTIONS 
-            value: "-javaagent:elastic-apm-agent-1.43.0.jar -Delastic.apm.server_url=http://apm-server.elastic:8200 -Delastic.apm.environment=dev -Dservice_name=backend-springboot -Delastic.apm.secret_token="    ## secret_token 값은 비워둠
+            value: "-javaagent:elastic-apm-agent-1.43.0.jar \
+            -Delastic.apm.server_url=https://6e78510bde4d4448946b13d3479bc154.apm.us-central1.gcp.cloud.es.io:443 \
+            -Delastic.apm.environment=dev \
+            -Dservice_name=backend-springboot \
+            -Delastic.apm.secret_token=26uqqwhO9WcHD8RR2u"    ## secret_token 값은 비워둠
         ports:
         - containerPort: 8080
